@@ -1,0 +1,26 @@
+require(ggplot2)
+
+Direction_changes <- 50
+
+x <- c(seq(0,1,1/Direction_changes))
+
+y <- rep(NA,Direction_changes)
+
+y[1] = 0
+
+for (i in 2:Direction_changes) {
+  y[i] = y[i-1] + (x[i]-y[i-1])/(1-x[i-1]) * 1/Direction_changes
+}
+
+y[Direction_changes+1] = 1
+
+plot <- qplot(x=x,y=y)
+plot + geom_line()
+
+z <- rep(NA,Direction_changes)
+z[1] = 0
+for (i in 1:Direction_changes+1) {
+  z[i] = ((y[i] - y[i-1])^2 + (x[i] - x[i-1])^2)^.5
+}
+
+sum(z)
