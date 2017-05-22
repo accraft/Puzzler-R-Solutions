@@ -1,6 +1,6 @@
 require(ggplot2)
 
-Direction_changes <- 50
+Direction_changes <- 10000
 
 x <- c(seq(0,1,1/Direction_changes))
 
